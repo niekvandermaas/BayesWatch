@@ -1,2 +1,2 @@
 # Bayesian adaptive design
-Repository for testing my Git/GitHub setup
+Repository for simulations regarding clinical trial design
