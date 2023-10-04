@@ -1,6 +1,6 @@
-simulate_arrival_times <- function(d_pt_month, n_patients) {
+simulate_arrival_times <- function(acc_pt, n_patients) {
   
-  a_times <- cumsum(rexp(n_patients, d_pt_month))
+  a_times <- cumsum(rexp(n_patients, acc_pt))
   return(a_times)
   
 }
