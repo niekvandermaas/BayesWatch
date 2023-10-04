@@ -12,7 +12,7 @@ sim_run <- function(n_patients, #Number of patients in simulated data set
                     pw_survival_time_e, #piecewise hazard values for treatment group
                     pw_intervals, #time cutpoint at 12 months for pw exp model
                     interim_analysis, #number of patients at interim look
-                    d_pt_month, #accrual per time unit (months)
+                    acc_pt, #accrual per time unit (months)
                     prop_loss_to_fu, #proportion lost to follow up 
                     total_time #total time of the study
                     ) {
@@ -42,7 +42,7 @@ sim_run <- function(n_patients, #Number of patients in simulated data set
   dat_tot <- data.frame(
                     id = 1:n_patients,
                     trt = trt, 
-                    acc_time = simulate_arrival_times(d_pt_month, n_patients), 
+                    acc_time = simulate_arrival_times(acc_pt, n_patients), 
                     time = time,
                     event = time<total_time,
                     loss_to_fu = loss_to_fu
@@ -83,7 +83,7 @@ execution_time <- system.time({
             pw_survival_time_e = c(0.062, 0.050), # hazard rates for experimental treatment
             pw_intervals = c(0,12), #cutpoint is at 12 months or 1 year
             interim_analysis = seq(80, 120, 10), #interim look at 80, 90, 100, 110 and 120 patients
-            d_pt_month = 126/36, # accrual rate per time unit (months)
+            acc_pt = 126/36, # accrual rate per time unit (months)
             prop_loss_to_fu = 0.10, #proportion loss to follow-up
             total_time = 42 #total study time
             )
