@@ -81,7 +81,7 @@ execution_time <- system.time({
     sim_run(n_patients = 126, #total of 126 patients
             pw_survival_time_c = c(0.144, 0.053), #hazard rates for control treatment
             pw_survival_time_e = c(0.062, 0.050), # hazard rates for experimental treatment
-            pw_intervals = c(0,12), #cutpoint is at 12 months or 1 year
+            pw_intervals = 12, #cutpoint is at 12 months or 1 year
             interim_analysis = seq(80, 120, 10), #interim look at 80, 90, 100, 110 and 120 patients
             acc_pt = 126/36, # accrual rate per time unit (months)
             prop_loss_to_fu = 0.10, #proportion loss to follow-up
