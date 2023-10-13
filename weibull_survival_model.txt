@@ -1,0 +1,22 @@
+model
+    {
+      #likelihood
+      for(i in 1:n)
+      {
+        is_censored[i] ~ dinterval(time[i], t_cen[i])
+        time[i] ~ dweib(r, lambda[i])
+        lambda[i] <- exp(beta_0 + beta_1 * group[i])
+      }
+ 
+      #priors
+      r ~ dunif(0.1, 5)
+      beta_0 ~ dnorm(0,1.0E-3)
+      beta_1 ~ dnorm(0,1.0E-3)     
+
+      #generated values
+      hr_1 <- exp(beta_1)
+
+      # post prob
+      p <- 1 - step(beta_1)
+    	
+   }
